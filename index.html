@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf8">
-    <title>weenote</title>
+    <title>WebAPI</title>
     <script src="weenote.js"></script>
     <style>
       body {
@@ -65,7 +65,7 @@
   </div>
   <script>
     var quote = "If the web doesn't do something right now, <br>it's not because it can't. <br>It's not like it's impossible. <br>It just means we haven't gone around doing it yet.";
-    var github = 'A: "Dammit, we can\'t do this on the web :(\nB: "You know, it\'s called the open web - you can change it!"\nA: "I can\'t just fork the web from GitHub and make it do the things I want."\nB: "Haha, no, it\'s not that simple. \nBut you can talk to some people and if they think your API makes sense, \nget a browser project from GitHub and they will help you to implement your new API."\nA: "But then it\'s just in one browser, not the web?"\nB: "You got to start somewhere."\nA: "Right... Can you help me get going?"\nB: "Sure!"'
+    var github = 'A: "Dammit, we can\'t do this on the web :(\nB: "You know, it\'s called the open web - you can change it!"\nA: "I can\'t just fork the web from GitHub and make it do the things I want."\nB: "Haha, no, it\'s not that simple. \n   But you can talk to some people and if they think your API makes sense, \n   get a browser project from GitHub and\n   they will help you to implement your new API."\nA: "But then it\'s just in one browser, not the web?"\nB: "You got to start somewhere."\nA: "Right... Can you help me get going?"\nB: "Sure!"'
 
     var words = [
       "Printing!",
@@ -74,6 +74,7 @@
       "-> new API",
       '<div style="text-align: left">' + quote + "</div><span class='footnote'>Brian LeRoux, @LXJS-2012</span>",
       '<div style="text-align: left"><pre>' + github + '</pre></div>',
+      "Web = Open",
       "WebAPI = OpenSource",
       "⓪",
       "passion",
@@ -84,6 +85,7 @@
       "①",
       "Idea -> Code -> Spec\nIdea -> Spec -> Code",
       "ASAP",
+      "Idea -> Code -> Spec",
       "research",
       /*
         - What should the API be able to do
@@ -99,18 +101,19 @@
       */
       "fake code",
       "share",
-      "Meetup\nTwitter\nGoogle+\nColleges",
+      "Twitter\nGoogle+\nMeetups\nColleges",
       "-> feedback ->",
       "③",
       "proposal",
       "get API review\n before continue",
       "dev-WebAPI",
       "no response :(",
-      "followup",
+      "followup!",
       "dev-layout",
       "expect to fail",
       "idea rejected :(",
       "other API idea",
+      "now :)",
       "more experience",
       "④",
       ">>> CODE <<<",
@@ -121,6 +124,7 @@
       "ask for best communication",
       "ask for examples",
       "ask before get depressed",
+      "ask for pointers",
       "lookup tools",
       "gdb",
       "printf",
@@ -135,21 +139,22 @@
       "change API after feedback",
       "get it right\nfrom the start",
       "come across other bugs\n- ignore them",
-      "stuck: create diff, crashlog, ...\n -> bug, irc, ...",
+      "stuck: \ncreate diff, crashlog, ...\n -> bug, irc, ...",
       "step back sometimes",
       "don't question yourself",
       "⑤",
       "LANDING",
+      "start feedback cycle ASAP",
       "format patch files",
       "split patch files",
-      "ask for reviewer",
+      "lookup reviewer",
+      "ask for review",
       "write tests",
       "it's an art",
-      "start feedback cycle ASAP",
       "upload WIP AOAP",
       "someone else",
       "state if something is unclear",
-      "add comments in code if need future clarification",
+      "mark unclear stuff in code",
       "⑥",
       "LANDED",
       "victory dance",
@@ -177,7 +182,18 @@
       "expect to be wrong,\n- admit it",
       "won't get replies within a day",
       "⑧",
-      ""
+      "Proposal to WhatWG\n mailing list",
+      "⑨",
+      "THAT'S SUPPOSED TO BE FUN?",
+      "Ohyaaaaaaaaaaaaaa!",
+      "see internals of browser",
+      "know why things are slow",
+      "C++",
+      "new tools",
+      "communication skills",
+      "fix other stuff",
+      "⑩",
+      "Q&A"
     ]
     words.forEach(function(word) {
       document.write('<div>' + word.replace(/\n/g, '<br>') + '</div>');
