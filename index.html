@@ -46,6 +46,9 @@
     <img src="img/skywriter.png" width="350px"></img>
   </div>
   <div fixed>
+    <img src="img/ace.png" width="350px"></img>
+  </div>
+  <div fixed>
     <img src="img/firefox.png" width="420px"></img>
   </div>
   <div fixed>
@@ -62,15 +65,103 @@
   </div>
   <script>
     var quote = "If the web doesn't do something right now, <br>it's not because it can't. <br>It's not like it's impossible. <br>It just means we haven't gone around doing it yet.";
+    var github = 'A: "Dammit, we can\'t do this on the web :(\nB: "You know, it\'s called the open web - you can change it!"\nA: "I can\'t just fork the web from GitHub and make it do the things I want."\nB: "Haha, no, it\'s not that simple. \nBut you can talk to some people and if they think your API makes sense, \nget a browser project from GitHub and they will help you to implement your new API."\nA: "But then it\'s just in one browser, not the web?"\nB: "You got to start somewhere."\nA: "Right... Can you help me get going?"\nB: "Sure!"'
 
     var words = [
       "Printing!",
+      "W\nT\nF",
       "SVG?",
-      "new API",
-      quote + "<span class='footnote'>Brian LeRoux, @LXJS-2012</span>",
-      "TODO: GITHUG",
+      "-> new API",
+      '<div style="text-align: left">' + quote + "</div><span class='footnote'>Brian LeRoux, @LXJS-2012</span>",
+      '<div style="text-align: left"><pre>' + github + '</pre></div>',
+      "WebAPI = OpenSource",
       "⓪",
-      "Communication",
+      "passion",
+      "expect pain",
+      "collaborate",
+      "me = JS\nbrowser = C++\nJS ≠ C++",
+      "takes time",
+      "①",
+      "Idea -> Code -> Spec\nIdea -> Spec -> Code",
+      "ASAP",
+      "research",
+      /*
+        - What should the API be able to do
+        - Is there another way to achieve it
+      */
+      "②",
+      "API-draft",
+      "somewhere",
+      "try to keep API small",
+      /*
+        - Try to build in the way the web works
+        - Follow other API designs
+      */
+      "fake code",
+      "share",
+      "Meetup\nTwitter\nGoogle+\nColleges",
+      "-> feedback ->",
+      "③",
+      "proposal",
+      "get API review\n before continue",
+      "dev-WebAPI",
+      "no response :(",
+      "followup",
+      "dev-layout",
+      "expect to fail",
+      "idea rejected :(",
+      "other API idea",
+      "more experience",
+      "④",
+      ">>> CODE <<<",
+      "! WAIT !",
+      "open a bug",
+      "ask for guidance",
+      "work across timezones",
+      "ask for best communication",
+      "ask for examples",
+      "ask before get depressed",
+      "lookup tools",
+      "gdb",
+      "printf",
+      "lookup similar code",
+      "lookup similar bugs",
+      "lookup docs | wiki",
+      "lookup people",
+      "get some C++ book",
+      ">>> CODE <<<",
+      "ask if things are\n known to be broken",
+      "issue with API design",
+      "change API after feedback",
+      "get it right\nfrom the start",
+      "come across other bugs\n- ignore them",
+      "stuck: create diff, crashlog, ...\n -> bug, irc, ...",
+      "step back sometimes",
+      "don't question yourself",
+      "⑤",
+      "LANDING",
+      "format patch files",
+      "split patch files",
+      "ask for reviewer",
+      "write tests",
+      "it's an art",
+      "start feedback cycle ASAP",
+      "upload WIP AOAP",
+      "someone else",
+      "state if something is unclear",
+      "add comments in code if need future clarification",
+      "⑥",
+      "LANDED",
+      "victory dance",
+      "fallout",
+      "crashes",
+      "that's usual",
+      /*
+        * if it takes you 1h to figure out how to get a patch right, there is something wrong
+        * if you spend entire evenings without progress, there is something wrong
+      */
+      "⑦",
+      "communication",
       "irc\nmailing list\nphone",
       "ask if unclear",
       "貳壹零弐肆捌㈥㈢参零",
@@ -78,39 +169,15 @@
       "keep it short",
       "keep it precise",
       "keep it to arguments",
-      "",
-      "①",
-      "Idea -> Code -> Spec\nIdea -> Spec -> Code",
-      "ASAP",
-      "Research",
-      /*
-        - What should the API be able to do
-        - Is there another way to achieve it
-      */
-      "②",
-      "API Draft",
-      /*
-        - Try to build in the way the web works
-        - Follow other API designs
-      */
-      "Share",
-      "Meetup\nTwitter\nGoogle+",
-      "-> Feedback ->",
-      "③",
-      "Propose",
-      "Dev-WebAPI",
-      "No response :(",
-      "⒈ Followup",
-      "dev-layout",
-      "⒉ Expect to fail",
-      "Idea rejected :(",
-      "other API idea",
-      "⒊ more experience",
-      "⒊ Try to find\nright people",
-      "④",
-      "Code",
-      "⒋ Ask for guidance"
-
+      "be open for new tools",
+      "> 400m users",
+      "be the\ndriving force",
+      "time consuming",
+      "communicate in the open",
+      "expect to be wrong,\n- admit it",
+      "won't get replies within a day",
+      "⑧",
+      ""
     ]
     words.forEach(function(word) {
       document.write('<div>' + word.replace(/\n/g, '<br>') + '</div>');
