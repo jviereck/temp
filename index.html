@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf8">
+    <title>weenote</title>
+    <script src="weenote.js"></script>
+    <style>
+      body {
+        font-family: "Helvetica", "sans-serif";
+        font-weight: bold;
+        background-color: #000;
+        text-align: center;
+        color: #FFF;
+        white-space: nowrap;
+        line-height: 1.5;
+      }
+
+      div > span.footnote {
+        border-top: 1px solid white;
+        padding-top: 40px;
+        margin-top: 40px;
+        font-size: 50%;
+        display: block;
+      }
+
+      a, em {
+        color: #C00;
+        font-style: normal;
+      }
+
+      a {
+        border-bottom: .1em dotted;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+  <div>
+    Don't dream - <br>
+    make the WebAPI of your <br>
+    dreams become real! <br>
+
+    <span class="footnote">Julian Viereck | @jviereck | +Julian Viereck
+  </div>
+  <div fixed>
+    <img src="img/skywriter.png" width="350px"></img>
+  </div>
+  <div fixed>
+    <img src="img/firefox.png" width="420px"></img>
+  </div>
+  <div fixed>
+    <img src="img/eth.png" style="background:white;padding:10px"></img>
+  </div>
+  <div fixed>
+    <img src="img/eth.png" style="background:white;padding:10px"></img>
+  </div>
+  <div fixed>
+    <img src="img/pdfjs.png"></img>
+  </div>
+  <div fixed>
+    <iframe src="http://mozilla.github.com/pdf.js/web/viewer.html" width="800px" height="600px"></iframe>
+  </div>
+  <script>
+    var quote = "If the web doesn't do something right now, <br>it's not because it can't. <br>It's not like it's impossible. <br>It just means we haven't gone around doing it yet.";
+
+    var words = [
+      "Printing!",
+      "SVG?",
+      "new API",
+      quote + "<span class='footnote'>Brian LeRoux, @LXJS-2012</span>",
+      "TODO: GITHUG",
+      "⓪",
+      "Communication",
+      "irc\nmailing list\nphone",
+      "ask if unclear",
+      "貳壹零弐肆捌㈥㈢参零",
+      "state you're\n a newby",
+      "keep it short",
+      "keep it precise",
+      "keep it to arguments",
+      "",
+      "①",
+      "Idea -> Code -> Spec\nIdea -> Spec -> Code",
+      "ASAP",
+      "Research",
+      /*
+        - What should the API be able to do
+        - Is there another way to achieve it
+      */
+      "②",
+      "API Draft",
+      /*
+        - Try to build in the way the web works
+        - Follow other API designs
+      */
+      "Share",
+      "Meetup\nTwitter\nGoogle+",
+      "-> Feedback ->",
+      "③",
+      "Propose",
+      "Dev-WebAPI",
+      "No response :(",
+      "⒈ Followup",
+      "dev-layout",
+      "⒉ Expect to fail",
+      "Idea rejected :(",
+      "other API idea",
+      "⒊ more experience",
+      "⒊ Try to find\nright people",
+      "④",
+      "Code",
+      "⒋ Ask for guidance"
+
+    ]
+    words.forEach(function(word) {
+      document.write('<div>' + word.replace(/\n/g, '<br>') + '</div>');
+    })
+  </script>
+</body>
+</html>
