@@ -31,8 +31,14 @@ setTimeout(function init() {
         if (top > 0 && left > 0) break
 
         // Decrease the number by less then 10 if the number gets small!
-        style.fontSize = (i -= 10) + "px"
+        style.fontSize = (i -= i * 0.05) + "px"
       }
+
+      // Make the font a little bit more smaller to get some space at the
+      // edges
+      style.fontSize = (i*0.95) + "px"
+      left = innerWidth - el.offsetWidth
+      top  = innerHeight - el.offsetHeight
     }
 
     style.display = "block"
