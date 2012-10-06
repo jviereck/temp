@@ -23,6 +23,18 @@
         display: block;
       }
 
+      div > span.head {
+        display: block;
+        text-align: left;
+        font-style: bold;
+      }
+
+      div > ul {
+        margin-left:2%;
+        text-align: left;
+        margin-top: -2%;
+      }
+
       a, em {
         color: #C00;
         font-style: normal;
@@ -67,6 +79,12 @@
     var quote = "If the web doesn't do something right now, <br>it's not because it can't. <br>It's not like it's impossible. <br>It just means we haven't gone around doing it yet.";
     var github = 'A: "Dammit, we can\'t do this on the web :(\nB: "You know, it\'s called the open web - you can change it!"\nA: "I can\'t just fork the web from GitHub and make it do the things I want."\nB: "Haha, no, it\'s not that simple. \n   But you can talk to some people and if they think your API makes sense, \n   get a browser project from GitHub and\n   they will help you to implement your new API."\nA: "But then it\'s just in one browser, not the web?"\nB: "You got to start somewhere."\nA: "Right... Can you help me get going?"\nB: "Sure!"'
 
+    function l(head, list) {
+      return '<span class="head">' + head + '</span><ul>' + list.map(function(i) {
+        return '<li>&nbsp;' + i + '</li>';
+      }).join('') + '</ul>';
+    }
+
     var words = [
       "Printing!",
       "W\nT\nF",
@@ -93,18 +111,20 @@
       */
       "②",
       "API-draft",
+      "usecase driven",
       "somewhere",
-      "try to keep API small",
+      l("try to keep API", ["small", "simple", "general"]),
       /*
         - Try to build in the way the web works
         - Follow other API designs
       */
-      "fake code",
+      "dream code",
       "share",
       "Twitter\nGoogle+\nMeetups\nColleges",
       "-> feedback ->",
       "③",
       "proposal",
+      "WHATWG*\nW3C-WG <span class='footnote'>*: Web Hypertext Application Technology Working Group</span>",
       "get API review\n before continue",
       "dev-WebAPI",
       "no response :(",
@@ -118,19 +138,14 @@
       "④",
       ">>> CODE <<<",
       "! WAIT !",
+      "HALL OF PAIN",
+      "find a mentor",
       "open a bug",
-      "ask for guidance",
-      "work across timezones",
-      "ask for best communication",
-      "ask for examples",
+      l("ask for", ["guidance", "examples", "pointers", "best communication"]),
       "ask before get depressed",
-      "ask for pointers",
-      "lookup tools",
+      l("lookup", ["docs | wiki", "tools", "similar code", "similar bugs", "people"]),
       "gdb",
       "printf",
-      "lookup similar code",
-      "lookup similar bugs",
-      "lookup docs | wiki",
       "lookup people",
       "get some C++ book",
       ">>> CODE <<<",
@@ -175,6 +190,7 @@
       "keep it precise",
       "keep it to arguments",
       "be open for new tools",
+      "different time-zones",
       "> 400m users",
       "be the\ndriving force",
       "time consuming",
