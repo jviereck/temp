@@ -29,7 +29,7 @@
         font-variant: small-caps;
       }
 
-      em, a {
+      em {
         font-style: normal;
         color: rgb(204, 0, 0);
       }
@@ -40,14 +40,10 @@
         margin-top: -2%;
       }
 
-      a, em {
-        color: #C00;
-        font-style: normal;
-      }
-
       a {
         border-bottom: .1em dotted;
         text-decoration: none;
+        color: white;
       }
     </style>
   </head>
@@ -194,12 +190,12 @@ A: "Dammit, we can't do this on the web :(<br>B: "You know, it's called the open
       "③",
       "proposal",
       "proposal ≠ spec",
-      l("proposal", [
+      l("proposal (*)", [
         "use-cases motivating",
         "details of the API",
         "rationale for it",
         "why nothing simpler"
-      ]),
+      ]) + '<span class="footnote"><a href="http://wiki.whatwg.org/wiki/FAQ#Is_there_a_process_for_adding_new_features_to_a_specification.3F">(*) WHATWG: Is there a process for adding new features to a specification?</a></span>',
       l('Where?',["WHATWG*","W3C-WG","browser vendors"]) + "<span class='footnote'>*: Web Hypertext Application Technology Working Group</span>",
       "dev-WebAPI",
       "no response :(",
@@ -275,10 +271,10 @@ A: "Dammit, we can't do this on the web :(<br>B: "You know, it's called the open
       "won't get replies within a day",
       "⑧",
       "printCallback API status?",
-      "Proposal to WhatWG\n mailing list",
+      "proposal to WhatWG\n mailing list",
       "no feedback\nme = :(",
       "⑨",
-      "THAT'S SUPPOSED TO BE FUN?",
+      "you = \n\"THAT'S SUPPOSED \nTO BE <em>FUN</em>?\"",
       "Ohyaaaaaaaaaaaaaa!",
       "see internals of browser",
       "know why things are slow",
@@ -294,7 +290,7 @@ A: "Dammit, we can't do this on the web :(<br>B: "You know, it's called the open
       "TBD",
       "just follow me on twitter :P",
       "THANKS",
-      "keep rocking the open web",
+      "keep rocking the\n<em>open web</em>",
       // l("links",['<a href="http://wiki.whatwg.org/wiki/FAQ#The_WHATWG_Process">WHATWG process</a>']),
       "Q&A"
     ]
