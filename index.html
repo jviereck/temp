@@ -26,7 +26,12 @@
       div > span.head {
         display: block;
         text-align: left;
-        font-style: bold;
+        font-variant: small-caps;
+      }
+
+      em, a {
+        font-style: normal;
+        color: rgb(204, 0, 0);
       }
 
       div > ul {
@@ -55,27 +60,73 @@
     <span class="footnote">Julian Viereck | @jviereck | +Julian Viereck
   </div>
   <div>
-    W<br>T<br>F
-  </div>
-  <div>
     What<br>The<br>Frühstück
   </div>
   <div>
-    JS -> [&nbsp;&nbsp;&nbsp;] -> JS
+    JS -> <em>[&nbsp;&nbsp;&nbsp;&nbsp;]</em> -> JS
   </div>
   <div>
-    JS-dev<br>⇩<br>browser
-  </div>
-  <div style="line-height:1">
-    JS-dev<br>⇩<br>idea<br>⇩<br>browser
-  </div>
-  <div style="line-height:1">
-    JS-dev<br>⇩<br>idea<br>⇩<br>browser
+    JS -> <em>C++</em> -> JS
   </div>
   <div>
-    JS -> [   ] -> JS
+    dev<br>⇕<br>browser
   </div>
-
+  <div style="line-height:1">
+    dev<br>⇕<br>idea<br>⇕<br>browser
+  </div>
+  <div style="line-height:1">
+    dev<br>⇕<br>idea<br>---------------<br>browser
+  </div>
+  <div style="line-height:1">
+    dev<br>⇕<br>idea<br>==========<br>browser
+  </div>
+  <div>
+    :(
+  </div>
+  <div style="text-align: left">
+    if the web doesn't do something right now, <br>
+    it's not because it can't. <br>
+    it's not like it's impossible. <br>
+    it just means we haven't gone around doing it - yet.
+    <div style="text-align:right; color:#666;">
+      - Brian LeRoux, @LXJS-2012
+    </div>
+  </div>
+  <div>
+    JS -> <em>C++</em> -> JS
+  </div>
+  <div>
+    Should devs make specs?
+  </div>
+  <div>
+    NO
+  </div>
+  <div>
+    Should devs propose ideas?
+  </div>
+  <div>
+    YES
+  </div>
+  <div>
+    Should devs implement them?
+  </div>
+  <div>
+    if they want to.
+  </div>
+  <div>
+    web = open
+  </div>
+  <div>
+    JS <3 open
+  </div>
+  <div>
+    WebAPIs = OpenSource?
+  </div>
+  <div>
+    <div style="text-align: left"><pre>
+A: "Dammit, we can't do this on the web :(<br>B: "You know, it's called the open web - you can change it!"<br>A: "I can't just fork the web from GitHub and make it do the things I want."<br>B: "Haha, no, it's not that simple. <br>   But you can talk to some people and if they think your API makes sense, <br>   get a browser project from GitHub and<br>   they will help you to implement your new API."<br>A: "But then it's just in one browser, not the web?"<br>B: "You got to start somewhere."<br>A: "Right... Can you help me get going?"<br>B: "Sure!"
+    </pre></div>
+  </div>
   <div fixed>
     <img src="img/skywriter.png" width="350px"></img>
   </div>
@@ -98,7 +149,6 @@
     <iframe src="http://mozilla.github.com/pdf.js/web/viewer.html" width="800px" height="600px"></iframe>
   </div>
   <script>
-    var quote = "If the web doesn't do something right now, <br>it's not because it can't. <br>It's not like it's impossible. <br>It just means we haven't gone around doing it yet.";
     var github = 'A: "Dammit, we can\'t do this on the web :(\nB: "You know, it\'s called the open web - you can change it!"\nA: "I can\'t just fork the web from GitHub and make it do the things I want."\nB: "Haha, no, it\'s not that simple. \n   But you can talk to some people and if they think your API makes sense, \n   get a browser project from GitHub and\n   they will help you to implement your new API."\nA: "But then it\'s just in one browser, not the web?"\nB: "You got to start somewhere."\nA: "Right... Can you help me get going?"\nB: "Sure!"'
 
     function l(head, list) {
@@ -108,25 +158,16 @@
     }
 
     var words = [
-      "Printing!",
-      "W\nT\nF",
+      "printing!",
       "SVG?",
       "-> new API",
-      '<div style="text-align: left">' + quote + "</div><span class='footnote'>Brian LeRoux, @LXJS-2012</span>",
-      '<div style="text-align: left"><pre>' + github + '</pre></div>',
-      "Web = Open",
-      "WebAPI = OpenSource",
-      "⓪",
-      "passion",
-      "expect pain",
-      "collaborate",
-      "me = JS\nbrowser = C++\nJS ≠ C++",
-      "takes time",
+      "me = 'Let's do this'",
       "①",
-      "Idea -> Code -> Spec\nIdea -> Spec -> Code",
+      "idea -> code -> spec\n----------------------------\nidea -> spec -> code",
       "ASAP",
-      "Idea -> Code -> Spec",
+      "idea -> code -> spec",
       "research",
+      "sanity check",
       /*
         - What should the API be able to do
         - Is there another way to achieve it
@@ -134,8 +175,9 @@
       "②",
       "API-draft",
       "usecase driven",
+      "web sanity check",
       "somewhere",
-      l("try to keep API", ["small", "simple", "general"]),
+      l("try to keep API", ["small", "simple", "general purpose"]),
       /*
         - Try to build in the way the web works
         - Follow other API designs
@@ -146,8 +188,9 @@
       "-> feedback ->",
       "③",
       "proposal",
+      "proposal ≠ spec",
+      l("proposal", [],
       "WHATWG*\nW3C-WG <span class='footnote'>*: Web Hypertext Application Technology Working Group</span>",
-      "get API review\n before continue",
       "dev-WebAPI",
       "no response :(",
       "followup!",
@@ -159,6 +202,9 @@
       "more experience",
       "④",
       ">>> CODE <<<",
+      l('good to know', ['requires passing', 'expect pain', 'collaborate', 'time consuming']),
+      "get API review\n before implementation",
+      'let`s go!',
       "! WAIT !",
       "HALL OF PAIN",
       "find a mentor",
@@ -182,10 +228,8 @@
       "⑤",
       "LANDING",
       "start feedback cycle ASAP",
-      "format patch files",
-      "split patch files",
-      "lookup reviewer",
-      "ask for review",
+      l("patch files", ["cleanup", "splitup"]),
+      l("reviewer", ["lookup", "request", "exchange"]),
       "write tests",
       "it's an art",
       "upload WIP AOAP",
@@ -228,10 +272,13 @@
       "know why things are slow",
       "C++",
       "new tools",
-      "fun community<span class='footnote'>http://mozillamemes.tumblr.com/</span>"
+      "fun community<span class='footnote'>http://mozillamemes.tumblr.com/</span>",
       "communication skills",
       "fix other stuff",
+      "big open source project<br>ship to million users",
+      "work with heros",
       "⑩",
+      // l("links",['<a href="http://wiki.whatwg.org/wiki/FAQ#The_WHATWG_Process">WHATWG process</a>']),
       "Q&A"
     ]
     words.forEach(function(word) {
