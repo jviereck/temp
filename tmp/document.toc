@@ -1,0 +1,11 @@
+\contentsline {section}{\numberline {I}Introduction}{1}
+\contentsline {section}{\numberline {II}Experiment simple logic gate}{1}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}Samples and measurement setup}{1}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}Results}{1}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-C}}Die Messergebnisse}{1}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-C}1}Die Analyse der Daten}{1}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-C}2}Genauigkeit der bestimmten Parameter}{1}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-C}3}Vergleich mit Literaturwerten}{1}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-D}}Schlussfolgerung und Ausblick }{1}
+\contentsline {section}{\numberline {III}Die Messmethode und der experimentelle Aufbau}{1}
+\contentsline {section}{\numberline {IV}Die Messergebnisse}{1}

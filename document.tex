@@ -1,0 +1,103 @@
+\documentclass[journal]{IEEEtran}
+
+% Package to commnet out sections.
+\usepackage{comment} 
+
+% Get the encoding and language right.
+\usepackage[utf8]{inputenc}
+% \usepackage[ngerman]{babel}
+
+\usepackage{graphicx}                  % This is needed for including figures and graphics
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{VP Bericht - Elektronik D}
+\author{Julian Viereck}
+\date{\today}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+
+In this experiment, some of the basic concepts of digital circuits are explored.
+Digital circuits contain logic gate. The gates transform a
+digital input signal into some digital output signal following a well defined functionality.
+The input and output signal are either ``high/1'' or ``low/0''. This is a main
+difference compared to the analogous circuits, which have a continous range of
+input/output signals. In todays world gates play an important role in. Every
+digital circuit contains a few up to multiple billions of them.
+
+Gates can be categorized by gate-family, that they belong to (e.g. TTL or CMOS)
+and some other specific properties. Gates perform different operations to
+``compute'' the output signal based on some input signal. Also, gates differ in
+terms of propagation delay, which is the delay a change in one of the input
+signals takes to cause a change in the output signal. The propagation delay is
+very important when designing digital circuits.
+
+In the following, the performend experiments are presented. The experiments
+describe how to determ the operation performed by a digitial circuit and it's
+propagation delay, how a pulse generator is build and how to implement a very
+simple bit shifter logic.
+
+\section{Experiment simple logic gate}
+
+\subsection{Samples and measurement setup}
+
+The circuit was setup as shown in image <PLACEHOLDER>. Based on the
+different input signals at A and B, different values for the output signal C
+were measured. As for the ICs, a HCF4001BE and HCF4011BE were used.
+
+To measure the propagation delay, input signal A was connect to a alternating
+current generator. Input signal B was connected to ground. The IC HCF4001BE
+was used for this measurement. The voltage of the generator was set to 2.9V and
+the frequency to 1Hz. The input signal A and output signal was visualized using
+a oscilloscope.
+
+\subsection{Results}
+
+For different input signals A and B, the following truth-table was measured as
+shown in \ref{truthtable}.
+
+\begin{table}
+\centering
+\begin{tabular}{c c | c || c c | c}
+  \multicolumn{2}{c}{4011}
+  \multicolumn{5}{c}{4001} \\
+  A & B & C & A & B & C \\ \hline
+  0 & 0 & 1 & 0 & 0 & 1 \\
+  0 & 1 & 1 & 0 & 1 & 0 \\
+  1 & 0 & 1 & 1 & 0 & 0 \\
+  1 & 1 & 0 & 1 & 1 & 0 \\ 
+\end{tabular}
+\label{truthtable}
+\caption{Truth table measuring 4011 and 4001}
+\end{table}
+
+
+
+
+Für das \em{NAND} Gatter wurde der Baustein ??? und für den \em{NOR} Gatter
+wurde der Baustein ??? verwendet. Die 
+
+\subsection{Die Messergebnisse}
+
+\subsubsection{Die Analyse der Daten}
+
+\subsubsection{Genauigkeit der bestimmten Parameter}
+
+\subsubsection{Vergleich mit Literaturwerten}
+
+\subsection{Schlussfolgerung und Ausblick }
+
+\section{Die Messmethode und der experimentelle Aufbau}
+
+\section{Die Messergebnisse}
+
+\end{document}

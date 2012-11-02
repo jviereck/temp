@@ -1,0 +1,22 @@
+Draft Bericht Elektronik_D: 12-10-20
+
+# Abstract
+
+# Einführung
+
+- Experiment behandelt logische Gutter/Schaltungen
+\ finden verwendung in Schaltkreisen
+\ z.B. auch Computer
+\ daher von grosser Bedeutung für das heutige Leben
+- hier: Untersuchung einiger Eigenschaften, die für Schaltkreise wichtig sind
+\ Wahrheitstabellen von Logikelementen
+\ Signallaufzeiten
+\ Kleiner eigener Schaltkreis und dabei auftretende Probleme
+
+Im Experiment gemacht:
+- Wahrheitstabelle von NAND unt NOR Schaltung durchgemesesen
+- Pulsgenerator / k-Wert bestimmen
+- eigener Versuch: shift operator
+
+Überblick über die Abfolge des Bericht
+- werde Experimente einzeln behandeln
