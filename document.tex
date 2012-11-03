@@ -3,6 +3,12 @@
 % Package to commnet out sections.
 \usepackage{comment} 
 
+% Package to make referenzes become ``hyperlinks''
+\usepackage{hyperref}
+
+% Package for drawings.
+\usepackage{tikz}
+
 % Get the encoding and language right.
 \usepackage[utf8]{inputenc}
 % \usepackage[ngerman]{babel}
@@ -57,16 +63,13 @@ were measured. As for the ICs, a HCF4001BE and HCF4011BE were used.
 To measure the propagation delay, input signal A was connect to a square wave
 voltage generator. Input signal B was connected to ground. The IC HCF4001BE
 was used for this measurement. The voltage of the generator was set to 2.9V and
-the frequency to 1Hz. The input signal A and output signal was visualized using
-a oscilloscope. The oscilloscope's trigger signal was connected to the voltage
+the frequency to 1Hz. The input signal A and output signal C was visualized
+using a oscilloscope. The oscilloscope's trigger signal was connected to the voltage
 generator.
 
 \subsection{Results}
 
-For different input signals A and B, the following truth-table was measured as
-shown in \ref{truthtable}.
-
-\begin{table}
+\begin{figure}
 \centering
 \begin{tabular}{c c | c || c c | c}
   \multicolumn{2}{c}{4011}
@@ -75,14 +78,34 @@ shown in \ref{truthtable}.
   0 & 0 & 1 & 0 & 0 & 1 \\
   0 & 1 & 1 & 0 & 1 & 0 \\
   1 & 0 & 1 & 1 & 0 & 0 \\
-  1 & 1 & 0 & 1 & 1 & 0 \\ 
+  1 & 1 & 0 & 1 & 1 & 0 \\
+  
 \end{tabular}
-\label{truthtable}
-\caption{Truth table measuring 4011 and 4001}
-\end{table}
+\caption{Truth table measuring IC HCF40011BE and HCF4001BE}
+\label{tab:truthtable} 
+\end{figure}
 
-The propagation delay was measured to be around 50ns as seen in
-\ref{propdelay}.
+ \begin{figure*}
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0)
+    {\includegraphics[width=\columnwidth]{img/delay.jpg}};
+    \draw[color=red] (1.2,1.1) -- (1.2,6);
+    \draw[color=red] (1.9,1.1) -- (1.9,6);
+    \path[<->] (1.2, 3) edge node[below]{$\approx 50ns$} (1.9,3);
+    \path[<-] (3.3, 3.8) edge node[near end, align=left, right]{Input signal A}
+    (4,5);
+    \path[<-] (3.3, 2.5) edge node[near end, align=left, right]{Output signal C}
+    (4,1.2);
+  \end{tikzpicture}
+  \caption{Propagation delay measurement.}
+  \label{fig:propdelay}
+\end{figure*}
+
+For different input signals A and B, the truth-table was measured as
+shown in table \ref{tab:truthtable}.
+
+The propagation delay was measured to be around 50ns as seen in figure
+\ref{fig:propdelay}.
 
 \subsection{Analysis and Discussion}
 
