@@ -8,6 +8,8 @@
 
 % Package for drawings.
 \usepackage{tikz}
+\usepackage{caption}
+\usepackage{subcaption}
 
 % Get the encoding and language right.
 \usepackage[utf8]{inputenc}
@@ -23,6 +25,7 @@
 \date{\today}                                           % Activate to display a given date or no date
 
 \begin{document}
+
 \maketitle
 
 \begin{abstract}
@@ -70,22 +73,22 @@ generator.
 \subsection{Results}
 
 \begin{figure}
-\centering
-\begin{tabular}{c c | c || c c | c}
-  \multicolumn{2}{c}{4011}
-  \multicolumn{5}{c}{4001} \\
-  A & B & C & A & B & C \\ \hline
-  0 & 0 & 1 & 0 & 0 & 1 \\
-  0 & 1 & 1 & 0 & 1 & 0 \\
-  1 & 0 & 1 & 1 & 0 & 0 \\
-  1 & 1 & 0 & 1 & 1 & 0 \\
-  
-\end{tabular}
-\caption{Truth table measuring IC HCF40011BE and HCF4001BE}
-\label{tab:truthtable} 
+	\centering
+	\begin{tabular}{c c | c || c c | c}
+ 		 \multicolumn{2}{c}{4011}
+  		 \multicolumn{5}{c}{4001} \\
+		  A & B & C & A & B & C \\ \hline
+		  0 & 0 & 1 & 0 & 0 & 1 \\
+		  0 & 1 & 1 & 0 & 1 & 0 \\
+		  1 & 0 & 1 & 1 & 0 & 0 \\
+		  1 & 1 & 0 & 1 & 1 & 0 \\
+	\end{tabular}
+	\caption{Truth table measuring IC HCF40011BE and HCF4001BE}
+	\label{tab:truthtable} 
 \end{figure}
 
- \begin{figure*}
+ \begin{figure}
+   \centering
   \begin{tikzpicture}
     \node[anchor=south west,inner sep=0] at (0,0)
     {\includegraphics[width=\columnwidth]{img/delay.jpg}};
@@ -99,7 +102,7 @@ generator.
   \end{tikzpicture}
   \caption{Propagation delay measurement.}
   \label{fig:propdelay}
-\end{figure*}
+\end{figure}
 
 For different input signals A and B, the truth-table was measured as
 shown in table \ref{tab:truthtable}.
@@ -118,15 +121,46 @@ around 40ns and up to 75ns. This fits with the here measured delay.
 
 \section{Pulse Generator}
 
+A pulse generators are used to create rectangular, periodic voltage signals. In
+this experiment, such a generator was build and the properties examined. 
+
 \subsection{Samples and measurement setup}
 
+\begin{figure}[h!]
+  \centering
+   \includegraphics[]{boards/astabil_multivibrator.png}
+   \caption{Circuit diagram of astable multivibrator.}
+   \label{fig:am_board}
+\end{figure}
 
-The circuit was setup as shown in TODO. The period was measured using a
-oscilloscope.
+The circuit was assembled as shown in figure \ref{fig:am_board}. Here, the IC
+HCF4069UBE was used, which contains six NOT gates. The voltage difference
+between the output signals $O1$, $O2$ and the ground was quantified using an
+oscilloscope. This also allowed to visualize and measure the period of the
+oscillations.
+Different values for the resistance $R1$ and the capacity $C1$ were chosen and
+the resulting period of the voltage signals determined.
 
 \subsection{Functionality explanation}
 
-TODO.
+\begin{figure}[h!]
+  \centering
+   \includegraphics[]{boards/am_overview.png}
+   \caption{schematic drawing of the astable multivibrator circuit.}
+   \label{fig:am_scheme}
+\end{figure}
+
+A schematic drawing of the circuit is presented in figure \ref{fig:am_scheme}.
+The explanation follows the one given in \cite{book_dg}. Let's assume the
+voltage at $O1$ is set to be \emph{high} and the capacitor is uncharged. Due to
+the \emph{high} signal at $O1$, the signal at $O2$ is \emph{low}. Over the
+resistance $R1$ the capacitor is charged. At some point, the voltage at $I1$ is high enough, such
+that the input signal of $ICA$ is recognized as \emph{high}. This causes the
+signal at $O1$ to become \emph{low} and therefore the signal at $O2$ to be
+\emph{high}. The charged capacitor discharges, which keeps the \emph{high}
+signal at the $I1$ input for some time until the voltage on the capacitor is to
+low, such that the signal at $I1$ is recognized as a \emph{low} signal, the
+signal at $O1$ becomes a \emph{high} one and things start over again.
 
 \subsection{Results}
 
@@ -157,5 +191,17 @@ measurements, the k-values are computed in \ref{ktable}.
 \section{Die Messmethode und der experimentelle Aufbau}
 
 \section{Die Messergebnisse}
+
+\begin{center}
+\line(1,0){250}
+\end{center}
+
+\begin{thebibliography}{------}
+\bibitem[BOOK]{book_dg}
+	J. U. Bowie, R. L\"uthy and D. Eisenberg.
+	{\em A Method to Identify Protein Sequences That Fold 
+	into a Known Three-Dimensional Structure}.
+	Science, 1991 (253), pp 164-170
+\end{thebibliography}
 
 \end{document}
