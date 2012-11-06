@@ -43,6 +43,8 @@ difference compared to the analogous circuits, which have a continuous range of
 input/output signals. In today's world gates play an important role in. Every
 digital circuit contains a few up to multiple billions of them.
 
+TODO: Write something about IC.
+
 Gates can be categorized by gate-family, that they belong to (e.g. TTL or CMOS)
 and some other specific properties. Gates perform different operations to
 ``compute'' the output signal based on some input signal. Also, gates differ in
@@ -59,9 +61,17 @@ simple bit shifter logic.
 
 \subsection{Samples and measurement setup}
 
-The circuit was setup as shown in image <PLACEHOLDER>. Based on the
+\begin{figure}[h!]
+  \centering
+   \includegraphics[]{boards/truth.png}
+   \caption{Circuit diagram to measure truth table.}
+   \label{fig:truth_circuit}
+\end{figure}
+
+The circuit was setup as shown in figure \ref{fig:truth_circuit}. Based on the
 different input signals at A and B, different values for the output signal C
-were measured. As for the ICs, a HCF4001BE and HCF4011BE were used.
+were measured using a oscilloscope. As for the ICs, a HCF4001BE and HCF4011BE
+were used.
 
 To measure the propagation delay, input signal A was connect to a square wave
 voltage generator. Input signal B was connected to ground. The IC HCF4001BE
@@ -122,7 +132,7 @@ around 40ns and up to 75ns. This fits with the here measured delay.
 \section{Pulse Generator}
 
 A pulse generators are used to create rectangular, periodic voltage signals. In
-this experiment, such a generator was build and the properties examined. 
+this experiment, such a generator was build and its properties examined. 
 
 \subsection{Samples and measurement setup}
 
@@ -164,27 +174,87 @@ signal at $O1$ becomes a \emph{high} one and things start over again.
 
 \subsection{Results}
 
-The time diagram for the voltage at point A is shown in \ref{timeA} and for the
-point B in \ref{timeB}. In table \ref{ktable} different period times due to
-different choices of resistor R and capacitor C are recorded.  
+\begin{figure}
+  \centering
+   \includegraphics[trim=10mm 50mm 1mm 90mm, clip,
+   width=\columnwidth]{img/am_timing.pdf}
+   \caption{Timing diagram. Up: Voltage signal at $O1$; bottom: Voltage signal
+   at $O2$.}
+   \label{fig:am_timing}
+\end{figure}
+
+
+\begin{figure}
+  \centering
+   \includegraphics[trim=20mm 63mm 55mm 130mm, clip,
+   width=\columnwidth]{results/am_data.pdf}
+   \caption{Measurement of period time $t$ as function of resistance $R$ and
+   capacity $C$.}
+   \label{fig:am_result}
+\end{figure}
+
+
+The time diagram for the voltage at $O1$ and $O2$ is visualized in figure
+\ref{fig:am_timing}. In table \ref{fig:am_result} different period times $t$ due 
+to different choices of resistance $R$ and capacity $C$ are listed. The values
+for the resistances and the capacities shown here are excluding a manufacturing
+error of roughly up to $10\%$. Some of the capacities were more precise
+measured and are listed in the $C*$ column.
 
 \subsection{Analysis and Discussion}
 
-The k-value is defined by
+The k-value is defined as
 
 \begin{equation}
-	k = \frac{\Delta t}{R \cdot C}
+	k = \frac{t}{R \cdot C}
+	\label{eq:k}
 \end{equation}
 
-where $\Delta t$ is the period time, $R$ is the resistance of the resistor
+where $t$ is the period time, $R$ is the resistance of the resistor
 \em{R} and $C$ is the capacity of the capacitor \em{C}. Based on the
-measurements, the k-values are computed in \ref{ktable}.
+measurements, the k-values are computed in table \ref{fig:am_result} in the $k$
+column. For the more precisely measured capacities $C*$, the k-value $k*$ was
+computed using the $C*$ value.
 
-\subsubsection{Die Analyse der Daten}
+As mentioned in \cite{book_dg}, the relation between $t$ and the other
+quantities is given by
 
-\subsubsection{Genauigkeit der bestimmten Parameter}
+\begin{equation}
+	t = 2~R~C~\ln(3) \approx 2.2~R~C
+\end{equation}
 
-\subsubsection{Vergleich mit Literaturwerten}
+which gives the value of $k$ using \ref{eq:k}
+
+\begin{equation}
+	k = 2~\ln(3) \approx 2.2
+	\label{eq:k_lit}
+\end{equation}
+
+The average values of $k$ and $k*$ given in table \ref{fig:am_result} match very
+well with the expected values for k. Using the standard derivation of the average as
+an indicator for the uncertainty of the here measured $k$ and $k*$ values, the
+literal value is within the range of average +- standard derivation. However,
+the standard derivation is larger then 1/10 of the average value. This indicates
+a high uncertainty.
+
+\begin{figure}
+  \centering
+   \includegraphics[trim=50mm 90mm 45mm 125mm, clip,
+   width=\columnwidth,page=2]{results/am_data.pdf}
+   \caption{Measurement of period time $t$ as function of resistance $R$ and
+   capacity $C$.}
+   \label{fig:am_plot}
+\end{figure}
+
+The last column $Lit - \<k*\>$ holds the difference between the literature value
+\ref{eq:k_lit} and the calculated $k*$ value and therefore a simple error
+estimation between measurement and literature value. The error is calculated for
+the same capacitor $C = 200\text{nF}$. A plot of these errors is shown in 
+\ref{fig:am_plot}. The X-axis is plotted logarithmically. The shape of the curve
+suggests a exponential relation between $R$ and the error. As the $k*$ values
+are roughly the same for different choices of $C$, this might be an indication,
+that the error is mostly related to the choice of the resistance. The reason for
+this correspondence remained unclear to the author.
 
 \subsection{Schlussfolgerung und Ausblick }
 
@@ -198,10 +268,10 @@ measurements, the k-values are computed in \ref{ktable}.
 
 \begin{thebibliography}{------}
 \bibitem[BOOK]{book_dg}
-	J. U. Bowie, R. L\"uthy and D. Eisenberg.
-	{\em A Method to Identify Protein Sequences That Fold 
-	into a Known Three-Dimensional Structure}.
-	Science, 1991 (253), pp 164-170
+	U. Tietze, C. Schenk
+	{\em Halbleiter-Schaltungstechnik}.
+	Springer, sechste, neue Überarbeitete und erweiterte Auflage (1983), pp
+	176-177
 \end{thebibliography}
 
 \end{document}
