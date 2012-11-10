@@ -11,6 +11,8 @@
 \usepackage{caption}
 \usepackage{subcaption}
 
+\usepackage{amsmath}
+
 % Get the encoding and language right.
 \usepackage[utf8]{inputenc}
 % \usepackage[ngerman]{babel}
@@ -28,7 +30,11 @@
 
 \maketitle
 
-\begin{abstract}
+\begin{abstract}The here presented experiments give a brief overview of some
+important properties of digital circuits, how to measure them and is therefore a
+good starting point for those, that want to understand how digital circuits work.
+Problems of designing an own circuit are highlighted and solutions are presented.
+The importance of understanding the used digital components is emphasized.    
 \end{abstract}
 
 \tableofcontents
@@ -57,7 +63,7 @@ describe how to determine the operation performed by a digital circuit and it's
 propagation delay, how a pulse generator is build and how to implement a very
 simple bit shifter logic.
 
-\section{Experiment simple logic gate}
+\section{Experiment: Simple Logic Gate}
 
 \subsection{Samples and measurement setup}
 
@@ -129,7 +135,7 @@ specified functionality of the gates.
 Looking up the propagation delay from the data sheet, it is said to be typically
 around 40ns and up to 75ns. This fits with the here measured delay.
 
-\section{Pulse Generator}
+\section{Experiment: Pulse Generator}
 
 A pulse generators are used to create rectangular, periodic voltage signals. In
 this experiment, such a generator was build and its properties examined. 
@@ -175,6 +181,21 @@ signal at $O1$ becomes a \emph{high} one and things start over again.
 \subsection{Results}
 
 \begin{figure}
+	\begin{subfigure}[b]{\columnwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/am_o1_timing.jpg}
+	\end{subfigure} \\
+	\begin{subfigure}[b]{\columnwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/am_o2_timing.png}
+	\end{subfigure}
+	\caption{Up: Voltage difference at O1, bottom: Voltage difference at O2. Both
+	as function of time.}
+	\label{fig:am_timing}
+\end{figure}
+
+\begin{comment}
+\begin{figure}
   \centering
    \includegraphics[trim=10mm 50mm 1mm 90mm, clip,
    width=\columnwidth]{img/am_timing.pdf}
@@ -182,7 +203,7 @@ signal at $O1$ becomes a \emph{high} one and things start over again.
    at $O2$.}
    \label{fig:am_timing}
 \end{figure}
-
+\end{comment}
 
 \begin{figure}
   \centering
@@ -223,7 +244,7 @@ quantities is given by
 	t = 2~R~C~\ln(3) \approx 2.2~R~C
 \end{equation}
 
-which gives the value of $k$ using \ref{eq:k}
+which gives the value of $k$ using equation (\ref{eq:k}) as
 
 \begin{equation}
 	k = 2~\ln(3) \approx 2.2
@@ -235,7 +256,7 @@ well with the expected values for k. Using the standard derivation of the averag
 an indicator for the uncertainty of the here measured $k$ and $k*$ values, the
 literal value is within the range of average +- standard derivation. However,
 the standard derivation is larger then 1/10 of the average value. This indicates
-a high uncertainty.
+a high uncertainty in the measured quantities.
 
 \begin{figure}
   \centering
@@ -247,20 +268,200 @@ a high uncertainty.
 \end{figure}
 
 The last column $Lit - \<k*\>$ holds the difference between the literature value
-\ref{eq:k_lit} and the calculated $k*$ value and therefore a simple error
+(\ref{eq:k_lit}) and the calculated $k*$ value and therefore a simple error
 estimation between measurement and literature value. The error is calculated for
-the same capacitor $C = 200\text{nF}$. A plot of these errors is shown in 
+the same capacitor $C = 200\text{nF}$. A plot of these errors is shown in figure
 \ref{fig:am_plot}. The X-axis is plotted logarithmically. The shape of the curve
 suggests a exponential relation between $R$ and the error. As the $k*$ values
 are roughly the same for different choices of $C$, this might be an indication,
 that the error is mostly related to the choice of the resistance. The reason for
 this correspondence remained unclear to the author.
 
-\subsection{Schlussfolgerung und Ausblick }
+\section{Experiment: Self Build Digital Circuit}
 
-\section{Die Messmethode und der experimentelle Aufbau}
+In the last experiment, a shift operation was designed and implemented. For
+simplicity, the shifter presented is made up of only two input signals and zero
+or one shift to the left. Written as a programming expression, this
+corresponds to:
 
-\section{Die Messergebnisse}
+\begin{equation}
+	\{0, 1, 2, 3\} ~ \texttt{<<} ~ \{0, 1\}
+\end{equation}
+
+where the numbers in brackets represent all possible values. The result of the
+calculation was made visible to the user by using three LEDs.
+
+\subsection{Samples and measurement setup}
+
+To get an idea how the circuit should setup, the required logical operations
+were determined as:
+
+ 
+\begin{equation}
+\begin{tabular}{ c l }
+      \text{LED1} &= I1 \wedge \lnot S \\
+		\text{LED2} &= (I2 \wedge \lnot S) \vee (I1 \wedge S) \\
+		\text{LED3} &= (I2 \wedge S)
+\end{tabular}
+	\label{eq:}
+\end{equation}
+	
+where $I1$, $I2$ are the two input signal for the number to shift (the
+number is represented in binary form), $S$ indicates if a shift should happen
+(if high, do a shift on the input $I1$, $I2$) and LED\{1,2,3\} are the LEDs
+showing the result of the operation.
+
+\begin{figure}[h!]
+  \centering
+   \includegraphics[]{boards/shifter.png}
+   \caption{Scheme of the shifter circuit.}
+   \label{fig:shifter}
+\end{figure}
+
+After looking up the required components, the circuit was sketched out as shown
+in figure \ref{fig:shifter}. The four AND operations were covered using the IC
+CD4081GE, the NOT operation using the IC HCF4069UBE, the OR operation was done
+by ``just'' connecting two wires. The reasoning for the components R\{1, 2, 3\}
+and D\{1, 2\} is provided in the following section.
+
+To determine the propagation delay, input S was connected to a square
+wave generator running at 1khz and 5V. The input I2 was opened/set to a ``low''
+signal and the I1 input was closed/set to a ``high'' signal. The voltage
+difference at LED2 compared to GND was measured by attaching an oscilloscope to
+M.
+
+\subsection{Results} 
+
+\begin{figure}
+  \centering
+   \includegraphics[trim=15mm 75mm 10mm 80mm, clip,
+   width=\columnwidth]{img/shift_volt1.pdf}
+   \caption{Voltage difference at Point M and Input S compared to GND using
+   D1=1N4148PH}
+   \label{fig:signal_m1}
+\end{figure}
+
+The output signals of the AND gates was oscillating. The LED2 was
+shining only very little.
+
+After fixing these issues (see next section), the signal as meassured at the
+output M is shown in figure \ref{fig:signal_m1}.
+
+\subsection{Analysis and Discussion}
+
+The oscillation of the AND gate output signal was due to not well set ``low''
+signal on the inputs. The first draft missed out the resistors R\{1, 2, 3\}. It
+was assumed, that no input signal at a gate input results in a ``low'' signal.
+For the here used AND gates, the ``low'' signal needed to be explicit connected to the ground. By using the resistors, the ``high'' signal
+for closed switches was detected by the gates, but at the same time for opened
+switches, the wire was set to a ``low'' signal. The resistors were chosen to be
+$100\Omega$. The choice of $18\Omega$ worked as well, but the resistors got very
+hot and therefore got replaced by the $100\Omega$ ones. 
+
+``Just'' connecting the wires for LED2 turned also out to be a bad idea.
+A ``high'' signal at one of the wires was attenuate by the ``low'' signal of
+the other wire. Therefore, the two diodes D1 and D2 were added. This made the
+LED2 shine much brighter.
+
+With these two changes, the shifter was operating as expected.
+
+The waveform in figure \ref{fig:signal_m1} at point M was not expected. It looks
+like a discharge curve seen in a resistor-capacity circuit. However, the shifter circuit doesn't
+have ``any'' capacities. Replacing the diode D1 with a wire, made the wave
+become rectangular. This indicated a relation between the unexpected wave
+shape and the used diode.
+
+\begin{figure}
+  \centering
+   \includegraphics[trim=15mm 75mm 10mm 80mm, clip,
+   width=\columnwidth]{img/shift_volt2.pdf}
+   \caption{Voltage difference at Point M and Input S compared to GND using
+   D1=1N40058912}
+   \label{fig:signal_m2}
+\end{figure}
+
+The initially used diodes were of the type 1N4148PH. Replacing D1 with the type
+1N40058912 changed the waveform's shape as seen in figure \ref{fig:signal_m2}.
+
+\begin{figure}[h!]
+  \centering
+   \includegraphics[width=\columnwidth]{img/sim_circuit.png}
+   \caption{Reduced circuit used for simulation.}
+   \label{fig:signal_model}
+\end{figure}
+
+\begin{figure}
+	\begin{subfigure}[b]{\columnwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/sim_1.png}
+		\caption{C1 = 0.9pF, C2=35pF}
+	\end{subfigure} \\
+	\begin{subfigure}[b]{\columnwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/sim_2.png}
+		\caption{C1 = 5pF, C2=1pF}
+	\end{subfigure} \\
+	\begin{subfigure}[b]{\columnwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/sim_3.png}
+		\caption{C1 = 15pF, C2=35pF}
+	\end{subfigure}
+	\caption{Result running simulation for different choices of C1 and C2. Green
+	curve:
+	voltage of generator, blue curve: voltage at M; both compared to GND}
+	\label{fig:signal_model_result}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\begin{tabular}{c | c}
+		  Type & Capacity \\ \hline
+		  1N4148PH   & 0.9pF \\
+		  1N40058912 & 15pF  \\
+		  LED (LTL-307GE)  & 35pF\\
+	\end{tabular}
+	\caption{Used components and their capacities.}
+	\label{fig:signal_capacity_real} 
+\end{figure}
+
+Trying to understand this behavior, a simplified model was created as displayed
+in figure \ref{fig:signal_model}. The model reduces the LED to a diode. Every
+diode has a small inner-capacity with the order of pF. These capacities are
+added explicit in this model. The oscilloscope used to measure the voltage difference
+has itself a resistance of 1M$\Omega$, which was included in the model as well.
+For different choices of the the capacity C1 and C2 the circuit was simulated
+and the results are shown in figure \ref{fig:signal_model_result}. 
+
+Looking at the used components' capacities as listed in figure
+\ref{fig:signal_capacity_real}, the first and the last simulation is match
+the used components. While the first simulation curve matches the shape of the
+measured curve in figure \ref{fig:signal_m1}, the last simulation doesn't match
+the observed curve in figure \ref{fig:signal_m2}; but this measurement fits very
+well for the made-up capacities used in the middle simulation. The reason for
+this mismatch was not able to be figured out by the author.
+
+Without adjusting the diodes D1 and D2, a rectangular wave was possible to
+achieve by connecting M to GND using a resistor with 10k$\Omega$. This follows
+the same idea as the resistors introduced at S, I1 and I2.
+
+\section{Conclusion}
+
+The experiments presented here show some important property of digital circuits
+and how to measure those. Moreover, by doing a circuit from scratch, some of
+the issues designing a digital circuit were enlightened. Constructing a circuit
+requires understanding all the components. Otherwise things like the
+inner-capacity of diodes or the resistance of the measurement equipment might be
+forgotten to be taken into account. These can lead to unexpected behavior, which
+were relatively simple to figure out in this setup, but are imagined to be hard
+to control on larger circuits.
+
+Given that the here implemented circuit was simple compared to the circuits
+shipping with a computer/smartphone, it can only be imagined the hard work it takes to make
+large circuits operate precise. The complexity even grows, as there are more and
+more components packed on each chip and more functionality is covered by the
+same gadget.
+
+% THE END
 
 \begin{center}
 \line(1,0){250}
