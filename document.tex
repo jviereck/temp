@@ -41,16 +41,17 @@ The importance of understanding the used digital components is emphasized.
 
 \section{Introduction}
 
-Over the last years, more and more parts of people's life has become digital.
+Over the last years, more and more parts of people's life have become digital.
 Some people call this the digital revolution. While the devices get more
 packed with functionality and the complexity to build them increases, the root
-concept of digital technology stayed the same. There are only two states  still
-- 0/"low'' and 1/"high'', which form a single bit, and most digital circuits are
-made up of transistors.
+concept of digital technology stayed the same. There are still only two 
+still - 0/"low'' and 1/"high'', which form a single bit, and input signals get
+converted to some output signal following well defined operations.
 
 The main components of a digital circuits are given by resistors, capacities and
 transistors. From these components, logic gates (or just called gates) are
-build, that perform a single boolean operation given some input signal (e.g.
+constructed, that perform a single boolean operation
+(e.g.
 take two input signals, perform the AND operation on them and set a output
 signal based equal to the result of the AND operation). Gates are then
 assembled to so called integrated circuit (short: IC), that can perform more
@@ -255,7 +256,7 @@ quantities is given by
 	t = 2RC\ln(3) \approx 2.2RC
 \end{equation}
 
-which gives the value of $k$ using equation (\ref{eq:k}) as
+which yields the value of $k$ using equation (\ref{eq:k}) as
 
 \begin{equation}
 	k = 2~\ln(3) \approx 2.2
@@ -278,7 +279,7 @@ However, the standard derivation is larger then 1/10 of the average value.
 \end{figure}
 
 The last column $Lit - \<k*\>$ holds the difference between the literature value
-(\ref{eq:k_lit}) and the calculated $k*$ value and therefore a simple error
+(\ref{eq:k_lit}) and the calculated $k*$ value and therefore is a simple error
 estimation. A plot of these errors for $C = 200\text{nF}$ is shown in figure
 \ref{fig:am_plot}. The x-axis is plotted logarithmically. The shape of the curve
 suggests a exponential relation between $R$ and the error. As the $k*$ values
