@@ -23,17 +23,17 @@
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
 \title{VP Bericht - Elektronik D}
-\author{Julian Viereck}
-\date{\today}                                           % Activate to display a given date or no date
+\author{Julian Viereck - \today}
 
 \begin{document}
 
 \maketitle
 
-\begin{abstract}The here presented experiments give a brief overview of some
-important properties of digital circuits, how to measure them and is therefore a
-good starting point for those, that want to understand how digital circuits work.
-Problems of designing an own circuit are highlighted and solutions are presented.
+\begin{abstract}The here presented experiments give a brief overview on some
+important properties of digital circuits. For some properties, it is
+described how these are measure. This might serve as a good starting point for
+those, that want to understand how digital circuits work.
+Problems designing an own circuit are highlighted and solutions are presented.
 The importance of understanding the used digital components is emphasized.    
 \end{abstract}
 
@@ -41,27 +41,37 @@ The importance of understanding the used digital components is emphasized.
 
 \section{Introduction}
 
-In this experiment, some of the basic concepts of digital circuits are explored.
-Digital circuits contain logic gate. The gates transform a
-digital input signal into some digital output signal following a well defined functionality.
-The input and output signal are either ``high/1'' or ``low/0''. This is a main
-difference compared to the analogous circuits, which have a continuous range of
-input/output signals. In today's world gates play an important role in. Every
-digital circuit contains a few up to multiple billions of them.
+Over the last years, more and more parts of people's life has become digital.
+Some people call this the digital revolution. While the devices get more
+packed with functionality and the complexity to build them increases, the root
+concept of digital technology stayed the same. There are only two states  still
+- 0/"low'' and 1/"high'', which form a single bit, and most digital circuits are
+made up of transistors.
 
-TODO: Write something about IC.
+The main components of a digital circuits are given by resistors, capacities and
+transistors. From these components, logic gates (or just called gates) are
+build, that perform a single boolean operation given some input signal (e.g.
+take two input signals, perform the AND operation on them and set a output
+signal based equal to the result of the AND operation). Gates are then
+assembled to so called integrated circuit (short: IC), that can perform more
+complex operations.
 
-Gates can be categorized by gate-family, that they belong to (e.g. TTL or CMOS)
-and some other specific properties. Gates perform different operations to
-``compute'' the output signal based on some input signal. Also, gates differ in
-terms of propagation delay, which is the delay a change in one of the input
-signals takes to cause a change in the output signal. The propagation delay is
-very important when designing digital circuits.
+Logic gates are produced in different ways, which lead to different properties.
+Gates with the same properties are grouped into so called logic gate families.
+Two important logic gate families are TTL (transistor–transistor logic) and CMOS
+(complementary metal–oxide–semiconductor). TTLs are only made up from resistors and
+transistors. Typically, they require a supply voltage of 5V. A voltage lower
+then 1.8V is interpreted as a "low" signal. The output signal is less then 0.4V
+for a low and over 2.4V for a high signal. The big disadvantage compared
+to CMOS is the higher power usage. Where TTL uses only bipolar transistors, CMOS also uses
+MOSFETs. The voltage for the power supply can range from 3V to 30V. The voltage
+ranges detected as high/low signal depends on the power supply voltage.
 
-In the following, the performed experiments are presented. The experiments
-describe how to determine the operation performed by a digital circuit and it's
-propagation delay, how a pulse generator is build and how to implement a very
-simple bit shifter logic.
+The following experiments will concentrate on analysing some of the properties
+of CMOS ICs. This will start by determining the performed operation of some ICs
+and their propagation delay. Next, a pulse generator is build and examined.
+Finally, a simple bit shift logic is presented, which was self designed and some
+of the issues going with the self designing are explained.
 
 \section{Experiment: Simple Logic Gate}
 
@@ -82,9 +92,9 @@ were used.
 To measure the propagation delay, input signal A was connect to a square wave
 voltage generator. Input signal B was connected to ground. The IC HCF4001BE
 was used for this measurement. The voltage of the generator was set to 2.9V and
-the frequency to 1Hz. The input signal A and output signal C was visualized
-using a oscilloscope. The oscilloscope's trigger signal was connected to the voltage
-generator.
+the frequency to 1Hz. The voltage was chosen, such that a slightly lower
+voltage was detected as a ``low" input signal. The input signal A and output
+signal C was visualized using a oscilloscope. The oscilloscope's trigger signal was connected to the voltage generator.
 
 \subsection{Results}
 
@@ -99,7 +109,7 @@ generator.
 		  1 & 0 & 1 & 1 & 0 & 0 \\
 		  1 & 1 & 0 & 1 & 1 & 0 \\
 	\end{tabular}
-	\caption{Truth table measuring IC HCF40011BE and HCF4001BE}
+	\caption{Truth table measuring IC HCF40011BE and HCF4001BE.}
 	\label{tab:truthtable} 
 \end{figure}
 
@@ -120,7 +130,7 @@ generator.
   \label{fig:propdelay}
 \end{figure}
 
-For different input signals A and B, the truth-table was measured as
+For different input signals A and B the truth-table was measured as
 shown in table \ref{tab:truthtable}.
 
 The propagation delay was measured to be around 50ns as seen in figure
@@ -137,7 +147,7 @@ around 40ns and up to 75ns. This fits with the here measured delay.
 
 \section{Experiment: Pulse Generator}
 
-A pulse generators are used to create rectangular, periodic voltage signals. In
+Pulse generators create rectangular, periodic voltage signals. In
 this experiment, such a generator was build and its properties examined. 
 
 \subsection{Samples and measurement setup}
@@ -155,27 +165,28 @@ between the output signals $O1$, $O2$ and the ground was quantified using an
 oscilloscope. This also allowed to visualize and measure the period of the
 oscillations.
 Different values for the resistance $R1$ and the capacity $C1$ were chosen and
-the resulting period of the voltage signals determined.
+the resulting period of the voltage signals recorded.
 
 \subsection{Functionality explanation}
 
 \begin{figure}[h!]
   \centering
    \includegraphics[]{boards/am_overview.png}
-   \caption{schematic drawing of the astable multivibrator circuit.}
+   \caption{Schematic drawing of the astable multivibrator circuit.}
    \label{fig:am_scheme}
 \end{figure}
 
 A schematic drawing of the circuit is presented in figure \ref{fig:am_scheme}.
 The explanation follows the one given in \cite{book_dg}. Let's assume the
 voltage at $O1$ is set to be \emph{high} and the capacitor is uncharged. Due to
-the \emph{high} signal at $O1$, the signal at $O2$ is \emph{low}. Over the
-resistance $R1$ the capacitor is charged. At some point, the voltage at $I1$ is high enough, such
-that the input signal of $ICA$ is recognized as \emph{high}. This causes the
+the \emph{high} signal at $O1$, the signal at $O2$ is \emph{low} (remember ICA
+and ICB are NOT gates).
+The capacitor is charged over the resistance $R1$. At some point, the voltage at
+$I1$ is high enough, such that the input signal of $ICA$ is recognized as \emph{high}. This causes the
 signal at $O1$ to become \emph{low} and therefore the signal at $O2$ to be
 \emph{high}. The charged capacitor discharges, which keeps the \emph{high}
-signal at the $I1$ input for some time until the voltage on the capacitor is to
-low, such that the signal at $I1$ is recognized as a \emph{low} signal, the
+signal at the $I1$ input for some time until the voltage on the capacitor is too
+low, such that the signal at $I1$ is recognized as a \emph{low} signal. The
 signal at $O1$ becomes a \emph{high} one and things start over again.
 
 \subsection{Results}
@@ -189,7 +200,7 @@ signal at $O1$ becomes a \emph{high} one and things start over again.
 		\centering
 		\includegraphics[width=\textwidth]{img/am_o2_timing.png}
 	\end{subfigure}
-	\caption{Up: Voltage difference at O1, bottom: Voltage difference at O2. Both
+	\caption{Up: voltage difference at O1; bottom: voltage difference at O2. Both
 	as function of time.}
 	\label{fig:am_timing}
 \end{figure}
@@ -218,7 +229,7 @@ signal at $O1$ becomes a \emph{high} one and things start over again.
 The time diagram for the voltage at $O1$ and $O2$ is visualized in figure
 \ref{fig:am_timing}. In table \ref{fig:am_result} different period times $t$ due 
 to different choices of resistance $R$ and capacity $C$ are listed. The values
-for the resistances and the capacities shown here are excluding a manufacturing
+for the resistances and the capacities used contain a manufacturing
 error of roughly up to $10\%$. Some of the capacities were more precise
 measured and are listed in the $C*$ column.
 
@@ -233,15 +244,15 @@ The k-value is defined as
 
 where $t$ is the period time, $R$ is the resistance of the resistor
 \em{R} and $C$ is the capacity of the capacitor \em{C}. Based on the
-measurements, the k-values are computed in table \ref{fig:am_result} in the $k$
-column. For the more precisely measured capacities $C*$, the k-value $k*$ was
-computed using the $C*$ value.
+measurements, the k-values are computed in the $k$
+column of table \ref{fig:am_result}. For the more precisely measured
+capacities $C*$, the k-value $k*$ was computed using the $C*$ value.
 
 As mentioned in \cite{book_dg}, the relation between $t$ and the other
 quantities is given by
 
 \begin{equation}
-	t = 2~R~C~\ln(3) \approx 2.2~R~C
+	t = 2RC\ln(3) \approx 2.2RC
 \end{equation}
 
 which gives the value of $k$ using equation (\ref{eq:k}) as
@@ -251,27 +262,25 @@ which gives the value of $k$ using equation (\ref{eq:k}) as
 	\label{eq:k_lit}
 \end{equation}
 
-The average values of $k$ and $k*$ given in table \ref{fig:am_result} match very
-well with the expected values for k. Using the standard derivation of the average as
-an indicator for the uncertainty of the here measured $k$ and $k*$ values, the
-literal value is within the range of average +- standard derivation. However,
-the standard derivation is larger then 1/10 of the average value. This indicates
-a high uncertainty in the measured quantities.
+The average values of $k$ and $k*$ given in table \ref{fig:am_result} match with the expected values for k. Using the standard derivation of the
+average as an indicator for the uncertainty of the here computed $k$ and $k*$
+values, the literature value is within the range of average +- standard derivation.
+However, the standard derivation is larger then 1/10 of the average value.
+ This indicates a high uncertainty in the measured quantities.
 
 \begin{figure}
   \centering
    \includegraphics[trim=50mm 90mm 45mm 125mm, clip,
    width=\columnwidth,page=2]{results/am_data.pdf}
-   \caption{Measurement of period time $t$ as function of resistance $R$ and
-   capacity $C$.}
+   \caption{Plot of error comparing literature value to computed value for k* at
+   C = 200nF.}
    \label{fig:am_plot}
 \end{figure}
 
 The last column $Lit - \<k*\>$ holds the difference between the literature value
 (\ref{eq:k_lit}) and the calculated $k*$ value and therefore a simple error
-estimation between measurement and literature value. The error is calculated for
-the same capacitor $C = 200\text{nF}$. A plot of these errors is shown in figure
-\ref{fig:am_plot}. The X-axis is plotted logarithmically. The shape of the curve
+estimation. A plot of these errors for $C = 200\text{nF}$ is shown in figure
+\ref{fig:am_plot}. The x-axis is plotted logarithmically. The shape of the curve
 suggests a exponential relation between $R$ and the error. As the $k*$ values
 are roughly the same for different choices of $C$, this might be an indication,
 that the error is mostly related to the choice of the resistance. The reason for
@@ -281,7 +290,7 @@ this correspondence remained unclear to the author.
 
 In the last experiment, a shift operation was designed and implemented. For
 simplicity, the shifter presented is made up of only two input signals and zero
-or one shift to the left. Written as a programming expression, this
+or one shift of the bits to the left. Written as a programming expression, this
 corresponds to:
 
 \begin{equation}
@@ -289,11 +298,11 @@ corresponds to:
 \end{equation}
 
 where the numbers in brackets represent all possible values. The result of the
-calculation was made visible to the user by using three LEDs.
+calculation was visualized to the user using three LEDs.
 
 \subsection{Samples and measurement setup}
 
-To get an idea how the circuit should setup, the required logical operations
+To get an idea how the circuit should be setup, the required logical operations
 were determined as:
 
  
@@ -307,27 +316,29 @@ were determined as:
 \end{equation}
 	
 where $I1$, $I2$ are the two input signal for the number to shift (the
-number is represented in binary form), $S$ indicates if a shift should happen
-(if high, do a shift on the input $I1$, $I2$) and LED\{1,2,3\} are the LEDs
+number to shift is represented in binary form), $S$ indicates if a shift should
+happen (if high, do a shift on the input $I1$, $I2$) and LED\{1,2,3\} are the LEDs
 showing the result of the operation.
 
 \begin{figure}[h!]
   \centering
    \includegraphics[]{boards/shifter.png}
-   \caption{Scheme of the shifter circuit.}
+   \caption{Self designed bit shifter circuit.}
    \label{fig:shifter}
 \end{figure}
 
 After looking up the required components, the circuit was sketched out as shown
 in figure \ref{fig:shifter}. The four AND operations were covered using the IC
 CD4081GE, the NOT operation using the IC HCF4069UBE, the OR operation was done
-by ``just'' connecting two wires. The reasoning for the components R\{1, 2, 3\}
-and D\{1, 2\} is provided in the following section.
+by ``just'' connecting two wires at first place. In the first draft of
+the circuit the components R\{1, 2, 3\} and D\{1, 2\} were left
+out. The reasoning for adding them is provided in the ``Analysis and
+Discussion'' section.
 
 To determine the propagation delay, input S was connected to a square
-wave generator running at 1khz and 5V. The input I2 was opened/set to a ``low''
+wave generator running at 1kHz and 5V. The input I2 was opened/set to a ``low''
 signal and the I1 input was closed/set to a ``high'' signal. The voltage
-difference at LED2 compared to GND was measured by attaching an oscilloscope to
+difference at LED2 compared to GND was measured by attaching an oscilloscope at
 M.
 
 \subsection{Results} 
@@ -336,26 +347,30 @@ M.
   \centering
    \includegraphics[trim=15mm 75mm 10mm 80mm, clip,
    width=\columnwidth]{img/shift_volt1.pdf}
-   \caption{Voltage difference at Point M and Input S compared to GND using
-   D1=1N4148PH}
+   \caption{Voltage difference at point M and input S compared to GND using
+   D1=1N4148PH.}
    \label{fig:signal_m1}
 \end{figure}
 
 The output signals of the AND gates was oscillating. The LED2 was
 shining only very little.
 
-After fixing these issues (see next section), the signal as meassured at the
-output M is shown in figure \ref{fig:signal_m1}.
+After fixing these issues (see next section), the signal at the
+output M was measured and is shown in figure \ref{fig:signal_m1}.
 
 \subsection{Analysis and Discussion}
 
 The oscillation of the AND gate output signal was due to not well set ``low''
-signal on the inputs. The first draft missed out the resistors R\{1, 2, 3\}. It
-was assumed, that no input signal at a gate input results in a ``low'' signal.
-For the here used AND gates, the ``low'' signal needed to be explicit connected to the ground. By using the resistors, the ``high'' signal
-for closed switches was detected by the gates, but at the same time for opened
-switches, the wire was set to a ``low'' signal. The resistors were chosen to be
-$100\Omega$. The choice of $18\Omega$ worked as well, but the resistors got very
+signal at the gates' inputs. The first draft missed out the resistors R\{1, 2,
+3\}.
+It was assumed, that no input signal at a gate results in a ``low'' signal.
+For the here used AND gates, the ``low'' signal needed to be explicit connected to 
+the ground. By using the resistors, the gates detected a ``high'' signal
+for closed switches. At the same time for opened
+switches the wire was set to a ``low'' signal as the resistors connected the
+wire to the GND.
+The resistors were chosen to be $100\Omega$. The choice of $18\Omega$ worked
+as well, but the resistors got very
 hot and therefore got replaced by the $100\Omega$ ones. 
 
 ``Just'' connecting the wires for LED2 turned also out to be a bad idea.
@@ -363,13 +378,14 @@ A ``high'' signal at one of the wires was attenuate by the ``low'' signal of
 the other wire. Therefore, the two diodes D1 and D2 were added. This made the
 LED2 shine much brighter.
 
-With these two changes, the shifter was operating as expected.
+With these two changes, the shifter circuit was operating as planed.
 
-The waveform in figure \ref{fig:signal_m1} at point M was not expected. It looks
-like a discharge curve seen in a resistor-capacity circuit. However, the shifter circuit doesn't
-have ``any'' capacities. Replacing the diode D1 with a wire, made the wave
-become rectangular. This indicated a relation between the unexpected wave
-shape and the used diode.
+The wave form measured for the point M in figure \ref{fig:signal_m1} was not
+expected. It looks like a discharge curve seen in a resistor-capacity circuit.
+However, the shifter circuit doesn't
+have any capacities at first sight. Replacing the diode D1 with a wire made the
+wave become rectangular. This indicated a correlation between the unexpected
+wave shape and the used diode.
 
 \begin{figure}
   \centering
@@ -394,28 +410,28 @@ The initially used diodes were of the type 1N4148PH. Replacing D1 with the type
 	\begin{subfigure}[b]{\columnwidth}
 		\centering
 		\includegraphics[width=\textwidth]{img/sim_1.png}
-		\caption{C1 = 0.9pF, C2=35pF}
+		\caption{C1 = 0.9pF, C2 = 35pF}
 	\end{subfigure} \\
 	\begin{subfigure}[b]{\columnwidth}
 		\centering
 		\includegraphics[width=\textwidth]{img/sim_2.png}
-		\caption{C1 = 5pF, C2=1pF}
+		\caption{C1 = 5pF, C2 = 1pF}
 	\end{subfigure} \\
 	\begin{subfigure}[b]{\columnwidth}
 		\centering
 		\includegraphics[width=\textwidth]{img/sim_3.png}
-		\caption{C1 = 15pF, C2=35pF}
+		\caption{C1 = 15pF, C2 = 35pF}
 	\end{subfigure}
 	\caption{Result running simulation for different choices of C1 and C2. Green
 	curve:
-	voltage of generator, blue curve: voltage at M; both compared to GND}
+	voltage of generator, blue curve: voltage at M; both compared to GND.}
 	\label{fig:signal_model_result}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\begin{tabular}{c | c}
-		  Type & Capacity \\ \hline
+		  Component & Capacity \\ \hline
 		  1N4148PH   & 0.9pF \\
 		  1N40058912 & 15pF  \\
 		  LED (LTL-307GE)  & 35pF\\
@@ -424,51 +440,57 @@ The initially used diodes were of the type 1N4148PH. Replacing D1 with the type
 	\label{fig:signal_capacity_real} 
 \end{figure}
 
-Trying to understand this behavior, a simplified model was created as displayed
-in figure \ref{fig:signal_model}. The model reduces the LED to a diode. Every
+Trying to get an idea for this behavior, a simplified model was created as
+displayed in figure \ref{fig:signal_model}. The model reduces the LED to a diode. Every
 diode has a small inner-capacity with the order of pF. These capacities are
 added explicit in this model. The oscilloscope used to measure the voltage difference
 has itself a resistance of 1M$\Omega$, which was included in the model as well.
 For different choices of the the capacity C1 and C2 the circuit was simulated
-and the results are shown in figure \ref{fig:signal_model_result}. 
+and the results are shown in figure~\ref{fig:signal_model_result}.
 
 Looking at the used components' capacities as listed in figure
-\ref{fig:signal_capacity_real}, the first and the last simulation is match
-the used components. While the first simulation curve matches the shape of the
-measured curve in figure \ref{fig:signal_m1}, the last simulation doesn't match
-the observed curve in figure \ref{fig:signal_m2}; but this measurement fits very
-well for the made-up capacities used in the middle simulation. The reason for
-this mismatch was not able to be figured out by the author.
+\ref{fig:signal_capacity_real}, the capacities of the first and the last
+simulation match the used components. While the first simulation curve matches
+somewhat the shape of the measured curve in figure \ref{fig:signal_m1}, the last
+simulation doesn't match the observed curve in figure \ref{fig:signal_m2}.
+However, the measurement fits very well for the made-up capacities used in the
+middle simulation. The reason for this remains unclear to the author.
 
-Without adjusting the diodes D1 and D2, a rectangular wave was possible to
-achieve by connecting M to GND using a resistor with 10k$\Omega$. This follows
+Without adjusting the diodes D1 and D2 a rectangular wave was possible to
+achieve by connecting M to GND using a resistor of 10k$\Omega$. This follows
 the same idea as the resistors introduced at S, I1 and I2.
 
 \section{Conclusion}
 
-The experiments presented here show some important property of digital circuits
-and how to measure those. Moreover, by doing a circuit from scratch, some of
+The experiments presented here showed some important property of digital
+circuits and how to measure those. Moreover, by doing a circuit from scratch, some of
 the issues designing a digital circuit were enlightened. Constructing a circuit
 requires understanding all the components. Otherwise things like the
 inner-capacity of diodes or the resistance of the measurement equipment might be
 forgotten to be taken into account. These can lead to unexpected behavior, which
-were relatively simple to figure out in this setup, but are imagined to be hard
-to control on larger circuits.
+were relatively simple to hunt down in this setup, but are imagined to be
+much harder to find and control on larger circuits. Given that the here
+implemented circuit was simple compared to the circuits shipping with a computer/smartphone, it can only be imagined the hard work it takes to make
+large circuits operate precise. 
 
-Given that the here implemented circuit was simple compared to the circuits
-shipping with a computer/smartphone, it can only be imagined the hard work it takes to make
-large circuits operate precise. The complexity even grows, as there are more and
-more components packed on each chip and more functionality is covered by the
-same gadget.
+The complexity even grows, as there are more and
+more components packed on a single chip and more functionality is
+covered by the same gadget. To achieve this minimization, the inner components
+got smaller and smaller over the last years. This cannot continue for too long
+anymore as physical limits are approached very soon. Future
+improvements might require to change from the digital 
+circuits to circuits using light and/or quantum states.
 
 % THE END
 
+\begin{comment}
 \begin{center}
 \line(1,0){250}
 \end{center}
+\end{comment}
 
 \begin{thebibliography}{------}
-\bibitem[BOOK]{book_dg}
+\bibitem[1]{book_dg}
 	U. Tietze, C. Schenk
 	{\em Halbleiter-Schaltungstechnik}.
 	Springer, sechste, neue Überarbeitete und erweiterte Auflage (1983), pp
